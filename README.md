@@ -38,3 +38,52 @@
   </footer>
 </body>
 </html>
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ShoppingCart, Mail } from "lucide-react";
+
+const products = [
+  {
+    id: 1,
+    name: "Windows 10 Pro",
+    description: "Licença digital, ativação imediata.",
+    price: 5.0,
+  },
+  {
+    id: 2,
+    name: "Windows 11 Pro",
+    description: "Licença digital, compatível com PCs modernos.",
+    price: 79.9,
+  },
+];
+
+export default function Store() {
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <header className="bg-black text-white p-4 rounded-2xl shadow-md mb-6">
+        <h1 className="text-2xl font-bold">Minha Loja de Chaves Windows</h1>
+      </header>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        {products.map((product) => (
+          <Card key={product.id} className="rounded-2xl shadow">
+            <CardContent className="p-4 space-y-2">
+              <h2 className="text-xl font-semibold">{product.name}</h2>
+              <p className="text-gray-600">{product.description}</p>
+              <p className="text-green-700 font-bold">R$ {product.price.toFixed(2)}</p>
+              <Button className="w-full flex gap-2">
+                <ShoppingCart size={18} /> Comprar
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <footer className="mt-10 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 Minha Loja Digital - Todos os direitos reservados.</p>
+      </footer>
+    </div>
+  );
+}
